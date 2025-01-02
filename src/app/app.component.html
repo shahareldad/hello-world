@@ -1,9 +1,10 @@
 
 
+
 <!--
----- Adding forms
----- $event - reference to the click event object so we can prevent the default behavior
----- [(ngModel)] is here to bind the input value to the model to property newWishText
+---- using getters to filter data
+---- 
+---- 
 -->
 <div class="container">
   
@@ -24,7 +25,20 @@
   </form>
   <hr/>
 
-  <div *ngIf="items.length === 0; else showItems">
+  <div class="row mt-3">
+    <div class="col-sm-2">
+      <select class="form-select"
+              [(ngModel)]="selectedFilter">
+              <!-- (ngModelChange)="filterWishes($event)"> -->
+        <option value="0">All</option>
+        <option value="1">Unchecked</option>
+        <option value="2">Checked</option>
+      </select>
+    </div>
+  </div>
+  <hr/>
+
+  <div *ngIf="visibleItems.length === 0; else showItems">
     <div>
       <p>There are no wishes yet.</p>
     </div>
@@ -32,7 +46,7 @@
 
   <ng-template #showItems>
     <ul class="wish-list">
-      <li *ngFor="let item of items; index as ii">
+      <li *ngFor="let item of visibleItems; index as ii">
         <div class="form-check">
           <label class="form-check-label">
             <input type="checkbox"
@@ -54,6 +68,74 @@
   </div>
 </div>
 
+
+<!--
+---- Adding forms
+---- $event - reference to the click event object so we can prevent the default behavior
+---- [(ngModel)] is here to bind the input value to the model to property newWishText
+
+<div class="container">
+  
+  <div class="title-header">Hello, {{title}}</div>
+  <hr/>
+
+  <form class="row mt-3 gx-3 gy-2 align-items-center justify-content-center">
+    <div class="col-sm-6">
+      <label for="specificSizeInputName" class="visually-hidden">Wish</label>
+      <input type="text" class="form-control" name="new-wish-text" [(ngModel)]="newWishText">
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary"
+              type="submit"
+              (click)="$event.preventDefault(); addNewWish();"
+      >Add wish</button>
+    </div>
+  </form>
+  <hr/>
+
+  <div class="row mt-3">
+    <div class="col-sm-2">
+      <select class="form-select"
+              [(ngModel)]="selectedFilter"
+              (ngModelChange)="filterWishes($event)">
+        <option value="0">All</option>
+        <option value="1">Unchecked</option>
+        <option value="2">Checked</option>
+      </select>
+    </div>
+  </div>
+  <hr/>
+
+  <div *ngIf="visibleItems.length === 0; else showItems">
+    <div>
+      <p>There are no wishes yet.</p>
+    </div>
+  </div>
+
+  <ng-template #showItems>
+    <ul class="wish-list">
+      <li *ngFor="let item of visibleItems; index as ii">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox"
+                   class="checkbox"
+                   [checked]="item.isComplete"
+                   (click)="toggleWishItem(item)"
+                   [attr.data-index]="ii"
+            /> {{item.wishText}}
+          </label>
+        </div>
+      </li>
+    </ul>
+  </ng-template>
+  
+  <hr/>
+
+  <div *ngFor="let item of items; index as ii">
+    <div><span>{{item.wishText}}:</span> {{item.isComplete}}</div>
+  </div>
+</div>
+-->
 
 <!--
 ---- Adding event
