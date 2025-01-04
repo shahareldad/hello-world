@@ -1,11 +1,3 @@
-
-
-
-<!--
----- using getters to filter data
----- 
----- 
--->
 <div class="container">
   
   <div class="title-header">Hello, {{title}}</div>
@@ -17,29 +9,20 @@
   <hr/>
 
   <div class="row mt-3">
-    <div class="col-sm-2">
-      <select class="form-select"
-              [(ngModel)]="selectedFilter">
-        <option value="0">All</option>
-        <option value="1">Unchecked</option>
-        <option value="2">Checked</option>
-      </select>
-    </div>
+    <wish-filter
+      (filterWishes)="filter = $event">
+    </wish-filter>
   </div>
   <hr/>
 
   <div class="row mt-3">
     <div class="col-sm-2">
       <wish-list
-        [wishes]="visibleItems">
+        [wishes]="items.filter(filter)">
       </wish-list>
   </div>
   <hr/>
-
-  <div *ngFor="let item of items; index as ii">
-    <div><span>{{item.wishText}}:</span> {{item.isComplete}}</div>
-  </div>
-</div>
+</div> 
 
 
 <!--
