@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { WishItem } from '../shared/modules/wishitem';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { WishListComponent } from "./wish-list/wish-list.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgFor, NgIf, FormsModule],
+  imports: [NgFor, FormsModule, WishListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -32,10 +32,6 @@ export class AppComponent {
   //   else if (value === '1') this.visibleItems = this.items.filter((item) => !item.isComplete);
   //   else if (value === '2') this.visibleItems = this.items.filter((item) => item.isComplete);
   // }
-  toggleWishItem(item: any) {
-    item.isComplete = !item.isComplete;
-    // this.filterWishes(this.selectedFilter);
-  }
   addNewWish() {
     this.items.push(new WishItem(this.newWishText));
     this.newWishText = '';
