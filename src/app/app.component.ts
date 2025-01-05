@@ -13,5 +13,9 @@ import { WishFilterComponent } from './wish-filter/wish-filter.component';
 export class AppComponent {
   title = 'hello-world';
   items: WishItem[] = [ ];
-  filter: any = () => {};
+  
+  // new filter event handling
+  filter: any;
+  // old filter event handling
+  // filter: any = () => {};
 }

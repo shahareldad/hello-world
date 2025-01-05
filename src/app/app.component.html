@@ -10,7 +10,8 @@
 
   <div class="row mt-3">
     <wish-filter
-      (filterWishes)="filter = $event">
+      [(filterWishes)]="filter"> <!-- This is the new way to handle the filterWishes event - using two way binding -->
+    <!-- (filterWishes)="filter = $event" --> <!-- This is the old way to handle the filterWishes event -->
     </wish-filter>
   </div>
   <hr/>
