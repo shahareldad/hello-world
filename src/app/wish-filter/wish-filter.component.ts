@@ -26,6 +26,6 @@ export class WishFilterComponent {
 
   updateFilter(value: any) {
     this.filterWishes = filters[value];
-    this.filterWishes.emit(this.filterWishes);
+    this.filterWishesChange.emit(this.filterWishes);
   }
 }
