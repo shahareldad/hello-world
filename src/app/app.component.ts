@@ -12,7 +12,10 @@ import { WishFilterComponent } from './wish-filter/wish-filter.component';
 })
 export class AppComponent {
   title = 'hello-world';
-  items: WishItem[] = [ ];
+  items: WishItem[] = [
+    new WishItem('Learn Angular app', true),
+    new WishItem('Master Angular app'),
+  ];
   
   // new filter event handling
   filter: any;
