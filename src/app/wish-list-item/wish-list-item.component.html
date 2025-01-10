@@ -3,9 +3,9 @@
         <label class="form-check-label" [ngClass]="cssClass">
         <input type="checkbox"
                 class="checkbox"
-                [checked]="isComplete"
+                [checked]="wish.isComplete"
                 (click)="toggleIsComplete()"
-        /> {{wishText}}
+        /> {{wish.wishText}}
         </label>
     </div>
     <div>

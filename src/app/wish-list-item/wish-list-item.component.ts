@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgClass } from '@angular/common';
 import events from '../../shared/services/EventService';
+import { WishItem } from '../../shared/modules/wishitem';
 
 @Component({
   selector: 'wish-list-item',
@@ -10,9 +11,7 @@ import events from '../../shared/services/EventService';
 })
 export class WishListItemComponent {
 
-  @Input() wishText!: string;
-  @Input() isComplete!: boolean;
-  @Output() isCompleteChange = new EventEmitter<boolean>();
+  @Input() wish!: WishItem;
 
   get cssClass() {
     // return this.isComplete ? [ 'strikeout', 'text-muted' ] : [];
@@ -21,16 +20,15 @@ export class WishListItemComponent {
     //   'text-muted': this.isComplete
     // };
     return {
-      'strikeout text-muted': this.isComplete,
+      'strikeout text-muted': this.wish.isComplete,
     };
   }
 
   removeWish() {
-    events.emit('removeWish', this.wishText);
+    events.emit('removeWish', this.wish);
   }
 
   toggleIsComplete() {
-    this.isComplete = !this.isComplete;
-    this.isCompleteChange.emit(this.isComplete);
+    this.wish.isComplete = !this.wish.isComplete;
   }
 }
