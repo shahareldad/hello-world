@@ -3,6 +3,7 @@ import { WishItem } from '../shared/modules/wishitem';
 import { WishListComponent } from "./wish-list/wish-list.component";
 import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
 import { WishFilterComponent } from './wish-filter/wish-filter.component';
+import events from '../shared/services/EventService';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,28 @@ import { WishFilterComponent } from './wish-filter/wish-filter.component';
 })
 export class AppComponent {
   title = 'hello-world';
-  items: WishItem[] = [
-    new WishItem('Learn Angular app', true),
-    new WishItem('Master Angular app'),
-  ];
-  
+  items: WishItem[] = [ ];
+
+  constructor() { 
+    events.listen('removeWish', (wish: any) => {
+      console.dir(wish);
+    });
+  }
+
+  ngOnInit() {
+    this.items.push(new WishItem('Master Angular app 1'));
+    this.items.push(new WishItem('Master Angular app 2'));
+    this.items.push(new WishItem('Master Angular app 3'));
+    this.items.push(new WishItem('Master Angular app 4'));
+    this.items.push(new WishItem('Master Angular app 5'));
+    this.items.push(new WishItem('Master Angular app 6'));
+    this.items.push(new WishItem('Master Angular app 7'));
+    this.items.push(new WishItem('Master Angular app 8'));
+    this.items.push(new WishItem('Master Angular app 9'));
+
+    this.filter = '0';
+  }
+
   // new filter event handling
   filter: any;
   // old filter event handling
