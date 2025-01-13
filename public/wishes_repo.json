@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "wishText": "Master Angular app 1",
+        "description": "Master Angular app 1",
+        "isComplete": false
+    },
+    {
+        "id": 2,
+        "wishText": "Master Angular app 2",
+        "description": "Master Angular app 2",
+        "isComplete": false
+    },
+    {
+        "id": 3,
+        "wishText": "Master Angular app 3",
+        "description": "Master Angular app 3",
+        "isComplete": false
+    },
+    {
+        "id": 4,
+        "wishText": "Master Angular app 4",
+        "description": "Master Angular app 4",
+        "isComplete": false
+    },
+    {
+        "id": 5,
+        "wishText": "Master Angular app 5",
+        "description": "Master Angular app 5",
+        "isComplete": false
+    },
+    {
+        "id": 6,
+        "wishText": "Master Angular app 6",
+        "description": "Master Angular app 6",
+        "isComplete": false
+    },
+    {
+        "id": 7,
+        "wishText": "Master Angular app 7",
+        "description": "Master Angular app 7",
+        "isComplete": false
+    },
+    {
+        "id": 8,
+        "wishText": "Master Angular app 8",
+        "description": "Master Angular app 8",
+        "isComplete": false
+    },
+    {
+        "id": 9,
+        "wishText": "Master Angular app 9",
+        "description": "Master Angular app 9",
+        "isComplete": false
+    }
+]

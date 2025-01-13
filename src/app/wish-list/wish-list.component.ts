@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { WishItem } from '../../shared/modules/wishitem';
 import { WishListItemComponent } from "../wish-list-item/wish-list-item.component";
@@ -9,7 +9,10 @@ import { WishListItemComponent } from "../wish-list-item/wish-list-item.componen
   templateUrl: './wish-list.component.html',
   styleUrl: './wish-list.component.css'
 })
-export class WishListComponent {
+export class WishListComponent implements OnInit {
+  ngOnInit(): void {
+    
+  }
 
   @Input() wishes: WishItem[] = [ ];
 
