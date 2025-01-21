@@ -1,0 +1,23 @@
+<div class="container">
+  
+    <add-wish-form
+      (addWish)="items.push($event)">
+    </add-wish-form>
+    <hr/>
+  
+    <div class="row mt-3">
+      <wish-filter
+        [(filterWishes)]="filter"> <!-- This is the new way to handle the filterWishes event - using two way binding -->
+      <!-- (filterWishes)="filter = $event" --> <!-- This is the old way to handle the filterWishes event -->
+      </wish-filter>
+    </div>
+    <hr/>
+  
+    <div class="row mt-3">
+      <div class="col-sm-4">
+        <wish-list
+          [wishes]="items.filter(filter)">
+        </wish-list>
+      </div>
+    </div>
+  </div> 
