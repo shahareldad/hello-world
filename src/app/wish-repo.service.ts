@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class WishRepoService {
-  private wishesUrl = 'wishes_repo1.json';
+  private wishesUrl = 'wishes_repo.json';
 
   private getStandardOptions() : any {
     return {
