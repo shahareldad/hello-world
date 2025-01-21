@@ -24,26 +24,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.items.push(new WishItem('Master Angular app 1'));
-    // this.items.push(new WishItem('Master Angular app 2'));
-    // this.items.push(new WishItem('Master Angular app 3'));
-    // this.items.push(new WishItem('Master Angular app 4'));
-    // this.items.push(new WishItem('Master Angular app 5'));
-    // this.items.push(new WishItem('Master Angular app 6'));
-    // this.items.push(new WishItem('Master Angular app 7'));
-    // this.items.push(new WishItem('Master Angular app 8'));
-    // this.items.push(new WishItem('Master Angular app 9'));
-
-    this.wishRepo.getWishes().subscribe((wishes: any) => {
-      console.dir(['AppComponent','wishes', wishes]);
-      this.items = wishes;
-    });
+    this.wishRepo.getWishes().subscribe(
+      (wishes: any) => {
+        this.items = wishes;
+      },
+      (error: any) => {
+        alert(error.message);
+      }
+    );
 
     this.filter = '0';
   }
 
-  // new filter event handling
   filter: any;
-  // old filter event handling
-  // filter: any = () => {};
 }

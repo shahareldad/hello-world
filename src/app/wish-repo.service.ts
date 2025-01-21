@@ -20,7 +20,6 @@ export class WishRepoService {
   getWishes(): Observable<any> {
     // console.dir(['WishRepoService','getWishes', 'started']);
     let options = this.getStandardOptions();
-    debugger;
     options.params = new HttpParams({
       fromObject: {
         format: 'json'
