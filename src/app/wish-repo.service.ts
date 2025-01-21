@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { WishItem } from '../shared/modules/wishitem';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WishRepoService {
-  private wishesUrl = 'wishes_repo.json';
+  private wishesUrl = 'wishes_repo1.json';
 
   private getStandardOptions() : any {
     return {
@@ -25,7 +26,16 @@ export class WishRepoService {
         format: 'json'
       }
     });
-    return this.http.get<any>(this.wishesUrl, options);
+    return this.http.get<any>(this.wishesUrl, options).pipe(catchError(this.handleError));
+  }
+  
+  private handleError(error: HttpErrorResponse) {
+    if (error.status == 0) {
+      console.error(`There is an issue with the client or network connection: `, error.error);
+    } else {
+      console.error(`Server-side error`, error.error);
+    }
+    return throwError(() => new Error('כשלון ביבוא נתונים לתצוגה'));
   }
 
   private addWish(wish: WishItem) {
