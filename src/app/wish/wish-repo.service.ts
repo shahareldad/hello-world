@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { WishItem } from '../shared/modules/wishitem';
+import { WishItem } from '../../shared/modules/wishitem';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({

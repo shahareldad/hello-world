@@ -4,7 +4,7 @@ import { WishListComponent } from "./wish/wish-list/wish-list.component";
 import { AddWishFormComponent } from './wish/add-wish-form/add-wish-form.component';
 import { WishFilterComponent } from './wish/wish-filter/wish-filter.component';
 import { EventService } from '../shared/services/EventService';
-import { WishRepoService } from './wish-repo.service';
+import { WishRepoService } from './wish/wish-repo.service';
 
 @Component({
   selector: 'app-root',
