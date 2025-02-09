@@ -1,25 +1,41 @@
 <div class="container mt-5">
     <h2 class="text-center mb-4">Contact Us</h2>
-    <form>
+    <form [formGroup]="contactForm" (ngSubmit)="$event.preventDefault(); submitForm();">
       <!-- Name Field -->
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter your name" [formControl]="senderNameControl">
+        <input type="text" class="form-control" id="name" placeholder="Enter your name" formControlName="senderName">
+        <div *ngIf="contactForm.get('senderName')?.invalid && contactForm.get('senderName')?.dirty || contactForm.get('senderName')?.touched" class="text-danger">
+          <small class="text-danger"
+            *ngIf="contactForm.get('senderName')?.hasError('required')">This field is required</small>
+        </div>
       </div>
 
       <!-- Email Field -->
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter your email" [formControl]="senderEmailControl">
+        <input type="email" class="form-control" id="email" placeholder="Enter your email" formControlName="senderEmail">
+        <div *ngIf="contactForm.get('senderEmail')?.invalid && contactForm.get('senderEmail')?.dirty || contactForm.get('senderEmail')?.touched" class="text-danger">
+          <small class="text-danger"
+            *ngIf="contactForm.get('senderEmail')?.hasError('required')">This field is required</small>
+          <small class="text-danger"
+            *ngIf="contactForm.get('senderEmail')?.hasError('email')">Email address not valid</small>
+        </div>
       </div>
 
       <!-- Message Field -->
       <div class="mb-3">
         <label for="message" class="form-label">Message</label>
-        <textarea class="form-control" id="message" rows="4" placeholder="Write your message here" [formControl]="senderMessageControl"></textarea>
+        <textarea class="form-control" id="message" rows="4" placeholder="Write your message here" formControlName="senderMessage"></textarea>
+        <div *ngIf="contactForm.get('senderMessage')?.invalid && contactForm.get('senderMessage')?.dirty || contactForm.get('senderMessage')?.touched" class="text-danger">
+          <small class="text-danger"
+            *ngIf="contactForm.get('senderMessage')?.hasError('required')">This field is required</small>
+          <small class="text-danger"
+            *ngIf="contactForm.get('senderMessage')?.hasError('minlength')">Min length 10 chars</small>
+        </div>
       </div>
 
       <!-- Submit Button -->
-      <button class="btn btn-primary w-100" (click)="$event.preventDefault(); submitForm();">Submit</button>
+      <button class="btn btn-primary w-100" type="submit" [disabled]="contactForm.invalid">Submit</button>
     </form>
   </div>
