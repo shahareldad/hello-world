@@ -20,6 +20,8 @@
             *ngIf="contactForm.get('senderEmail')?.hasError('required')">This field is required</small>
           <small class="text-danger"
             *ngIf="contactForm.get('senderEmail')?.hasError('email')">Email address not valid</small>
+            <small class="text-danger"
+              *ngIf="contactForm.get('senderEmail')?.hasError('invalidEmailDomain')">Email provider not allowed</small>
         </div>
       </div>
 
